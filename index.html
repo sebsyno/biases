@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mental Traps — A Bias Field Guide for Marketing &amp; Sales | Sebastian Synowiec</title>
+<meta name="description" content="A working field guide to 27 cognitive biases relevant to B2B marketing, sales, and content — with real-world examples and critical-thinking checks." />
+<meta property="og:title" content="Mental Traps — A Bias Field Guide for Marketing & Sales" />
+<meta property="og:description" content="27 cognitive biases that shape how campaigns get approved, deals get won, and decks get believed — with practical countermeasures." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sebsyno.github.io/mental-traps.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0b1929;
+  --navy-mid: #122440;
+  --navy-light: #1e3a5f;
+  --gold: #c8a84b;
+  --gold-light: #e8c96a;
+  --cream: #f5f0e8;
+  --white: #ffffff;
+  --text-muted: rgba(245,240,232,0.55);
+  --text-dim: rgba(245,240,232,0.35);
+  --serif: 'Outfit', sans-serif;
+  --sans: 'DM Sans', sans-serif;
+  --mono: 'DM Mono', monospace;
+
+  /* category accents, drawn from the InsightDecks color coding in the source photos */
+  --cat-purple: #9b7fd4;
+  --cat-teal: #4fb3c4;
+  --cat-pink: #e0568f;
+  --cat-green: #5fae6e;
+  --cat-blue: #5b7fc7;
+  --cat-yellow: #d4a73c;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 3rem;
+  background: rgba(11,25,41,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid rgba(200,168,75,0.25);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-count {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  border: 0.5px solid rgba(200,168,75,0.35);
+  padding: 0.3rem 0.7rem;
+}
+
+/* HERO */
+.hero {
+  min-height: 92vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(30,58,95,0.5) 0%, transparent 70%),
+    linear-gradient(175deg, #0b1929 0%, #0f2236 50%, #0b1929 100%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(200,168,75,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,75,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-accent {
+  position: absolute;
+  top: 0; right: 10%;
+  width: 1px; height: 45vh;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  opacity: 0.6;
+}
+.hero-content { position: relative; max-width: 880px; padding-top: 80px; }
+.hero-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7vw, 5.6rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.35s forwards;
+}
+.hero-name .accent {
+  color: var(--gold);
+  font-weight: 200;
+  letter-spacing: 0.02em;
+}
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 2.3vw, 1.4rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero-divider {
+  width: 60px; height: 1px;
+  background: var(--gold);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.6s forwards;
+}
+.hero-intro {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.85;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.75s forwards;
+}
+.hero-legend {
+  margin-top: 3rem;
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.9s forwards;
+}
+.legend-item { display: flex; align-items: center; gap: 0.5rem; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.legend-label {
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.scroll-cue {
+  position: absolute; bottom: 2.5rem; right: 3rem;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeUp 1s 1.2s forwards;
+}
+.scroll-cue span {
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-dim); writing-mode: vertical-rl;
+}
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s 1.5s infinite;
+}
+
+/* SECTIONS */
+section { padding: 6rem 3rem; }
+.section-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.section-heading {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+.section-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin-bottom: 3rem;
+}
+.section-divider {
+  width: 40px; height: 1px;
+  background: var(--gold);
+  margin-bottom: 2rem;
+}
+
+/* CATEGORY GROUP */
+.category-block { margin-bottom: 5rem; }
+.category-header {
+  display: flex; align-items: baseline; gap: 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 0.5px solid rgba(200,168,75,0.15);
+  padding-bottom: 1.25rem;
+}
+.category-swatch {
+  width: 10px; height: 10px;
+  flex-shrink: 0;
+}
+.category-name {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--white);
+}
+.category-count {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-left: auto;
+}
+.category-tagline {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 2.25rem;
+  margin-top: 0.75rem;
+  max-width: 560px;
+}
+
+/* CARD GRID */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(200,168,75,0.12);
+}
+.card-grid--2col { grid-template-columns: repeat(2, 1fr); }
+.bias-card--span2 { grid-column: span 2; }
+.bias-card--span3 { grid-column: span 3; }
+.bias-card--span3 .bias-front {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 2.5rem;
+  row-gap: 0;
+}
+.bias-card--span3 .bias-index { grid-column: 1 / -1; margin-bottom: 0.5rem; }
+.bias-card--span3 .bias-name { grid-column: 1; margin-top: 0; white-space: nowrap; }
+.bias-card--span3 .bias-key { grid-column: 2; margin: 0; }
+.bias-card--span3 .bias-flip-hint { grid-column: 3; margin-top: 0; white-space: nowrap; }
+.bias-card--span3 .bias-card-inner,
+.bias-card--span3 .bias-front,
+.bias-card--span3 .bias-back { min-height: 170px; }
+.bias-card--span3 .bias-back { max-width: 70%; }
+.bias-card {
+  background: var(--navy);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  perspective: 1600px;
+  min-height: 280px;
+  position: relative;
+}
+.bias-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  transition: transform 0.55s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.bias-card.flipped .bias-card-inner { transform: rotateY(180deg); }
+
+.bias-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  padding: 2rem 1.85rem;
+  display: flex;
+  flex-direction: column;
+}
+.bias-front {
+  background: var(--navy);
+}
+.bias-front::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--accent, var(--gold));
+  transition: height 0.4s;
+}
+.bias-card:hover .bias-front::before { height: 100%; }
+.bias-card:hover .bias-front { background: rgba(30,58,95,0.35); }
+
+.bias-index {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-bottom: auto;
+}
+.bias-name {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+.bias-key {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.bias-flip-hint {
+  margin-top: 1.5rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent, var(--gold));
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.bias-flip-hint svg { width: 11px; height: 11px; }
+
+.bias-back {
+  background: var(--navy-mid);
+  transform: rotateY(180deg);
+  overflow-y: auto;
+}
+.bias-back-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent, var(--gold));
+  margin-bottom: 0.35rem;
+  margin-top: 0.85rem;
+}
+.bias-back-label:first-of-type { margin-top: 0; }
+.bias-back-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.bias-back-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 0.5px solid rgba(200,168,75,0.15);
+}
+.bias-question {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 0.5px solid rgba(200,168,75,0.15);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .bias-card, .bias-card-inner { min-height: 0; }
+  .bias-front, .bias-back { position: relative; }
+  .bias-card--span2 { grid-column: span 1; }
+  .bias-card--span3 { grid-column: span 1; }
+  .bias-card--span3 .bias-front {
+    display: flex;
+    flex-direction: column;
+  }
+  .bias-card--span3 .bias-index,
+  .bias-card--span3 .bias-name,
+  .bias-card--span3 .bias-key,
+  .bias-card--span3 .bias-flip-hint { grid-column: auto; }
+  .bias-card--span3 .bias-name { white-space: normal; }
+  .bias-card--span3 .bias-flip-hint { white-space: normal; }
+  .bias-card--span3 .bias-back { max-width: 100%; }
+}
+
+/* mobile: disable 3D flip, use accordion-style expand instead */
+@media (max-width: 600px) {
+  .bias-card-inner { transition: none; transform: none !important; }
+  .bias-back { position: static; transform: none; display: none; backface-visibility: visible; }
+  .bias-card.flipped .bias-back { display: flex; flex-direction: column; }
+  .bias-card.flipped .bias-front::before { height: 100%; }
+}
+
+/* LEGEND / INTRO STRIP */
+.intro-band {
+  background: var(--navy-mid);
+  border-top: 0.5px solid rgba(200,168,75,0.2);
+  border-bottom: 0.5px solid rgba(200,168,75,0.2);
+  padding: 3rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.intro-stat-number {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+}
+.intro-stat-desc {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  max-width: 240px;
+}
+
+/* FOOTER */
+footer {
+  padding: 2rem 3rem;
+  border-top: 0.5px solid rgba(200,168,75,0.15);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.08em;
+  flex-wrap: wrap; gap: 1rem;
+}
+footer a { color: var(--text-dim); text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 800px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links a:not(.nav-count) { display: none; }
+  section { padding: 4rem 1.5rem; }
+  .hero { padding: 0 1.5rem 3.5rem; min-height: 86vh; }
+  .intro-band { padding: 2.5rem 1.5rem; }
+  footer { flex-direction: column; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow, .hero-name, .hero-title, .hero-divider, .hero-intro, .hero-legend, .scroll-cue,
+  .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .bias-card-inner { transition: none !important; }
+  .scroll-line { animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Sebastian Synowiec</a>
+  <ul class="nav-links">
+    <li><a href="#decision">Decision &amp; Belief</a></li>
+    <li><a href="#emotional">Emotional</a></li>
+    <li><a href="#attention">Attention</a></li>
+    <li><a href="#social">Social</a></li>
+    <li><a href="#statistical">Statistical</a></li>
+    <li class="nav-count">27 BIASES</li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">A Working Field Guide</div>
+    <h1 class="hero-name">Mental <span class="accent">Traps</span></h1>
+    <p class="hero-title">27 cognitive biases that quietly shape campaigns, pitches, and pipeline decisions</p>
+    <div class="hero-divider"></div>
+    <p class="hero-intro">Every deck gets approved, every price gets set, and every lead gets read through a filter of shortcuts the brain takes without asking permission. This is a reference for spotting them before they cost a deal, a budget, or a quarter — built around real marketing and sales situations. Click any card to flip it.</p>
+    <div class="hero-legend">
+      <div class="legend-item"><span class="legend-dot" style="background:var(--cat-purple)"></span><span class="legend-label">Decision &amp; Belief</span></div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--cat-teal)"></span><span class="legend-label">Emotional &amp; Motivational</span></div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--cat-pink)"></span><span class="legend-label">Memory &amp; Recall</span></div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--cat-green)"></span><span class="legend-label">Attention &amp; Perception</span></div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--cat-blue)"></span><span class="legend-label">Social &amp; Attribution</span></div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--cat-yellow)"></span><span class="legend-label">Probability &amp; Statistical</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</header>
+
+<div class="intro-band">
+  <div>
+    <span class="intro-stat-number">27</span>
+    <p class="intro-stat-desc">Biases catalogued, each with a marketing or sales scenario attached</p>
+  </div>
+  <div>
+    <span class="intro-stat-number">6</span>
+    <p class="intro-stat-desc">Categories — decision, emotional, memory, attention, social, statistical</p>
+  </div>
+  <div>
+    <span class="intro-stat-number">2</span>
+    <p class="intro-stat-desc">Countermeasures per bias: notice the trap, then break the pattern</p>
+  </div>
+  <div>
+    <span class="intro-stat-number">1</span>
+    <p class="intro-stat-desc">Question to ask yourself before the next campaign review</p>
+  </div>
+</div>
+
+<main>
+
+  <section id="decision">
+    <div class="category-block reveal">
+      <div class="category-header">
+        <span class="category-swatch" style="background:var(--cat-purple)"></span>
+        <h2 class="category-name">Decision-Making &amp; Belief Biases</h2>
+        <span class="category-count">06</span>
+      </div>
+      <p class="category-tagline">How proposals get judged, prices get anchored, and "obvious" calls get made — usually after the fact.</p>
+
+      <div class="card-grid" style="--accent: var(--cat-purple)">
+
+        <div class="bias-card" style="--accent: var(--cat-purple)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">01 / DECISION &amp; BELIEF</span>
+              <h3 class="bias-name">Belief Bias</h3>
+              <p class="bias-key">When logic loses to likability.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Belief Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">We judge an argument's validity by how much we like the conclusion or the person making it, not by the actual logic. A buyer may approve a weak proposal because they like the rep, or reject a strong one because the tone felt off.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A prospect dismisses a well-reasoned AI migration case because the email tone felt "salesy," not because the ROI logic was flawed.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I judging this idea on its merits, or on how much I like who's presenting it?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Strip the argument from its source and re-evaluate it on logic alone.</p>
+              <p class="bias-question">Would I still find this convincing if a stranger said it?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-purple)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">02 / DECISION &amp; BELIEF</span>
+              <h3 class="bias-name">Confirmation Bias</h3>
+              <p class="bias-key">We seek what supports us — and screen out what challenges us.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Confirmation Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Once a hypothesis exists ("this content format works"), teams unconsciously favor data that confirms it and dismiss data that doesn't.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A newsletter strategy is deemed a success by citing the one segment with high open rates, ignoring three segments that underperformed.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I only looking at data that proves I'm right?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Actively search for the disconfirming case before drawing a conclusion.</p>
+              <p class="bias-question">What evidence would change my mind, and have I looked for it?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-purple)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">03 / DECISION &amp; BELIEF</span>
+              <h3 class="bias-name">Sunk Cost Fallacy</h3>
+              <p class="bias-key">You can't get it back — but it still controls you.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Sunk Cost Fallacy</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Past investment — time, budget, a tool already built — keeps pulling more resources in, even when the data says stop. Common in long content series or campaigns that aren't converting.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A team keeps refining a newsletter format that isn't growing subscribers, because "we already spent three months on it."</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I continuing because it's working, or because I've already invested in it?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Evaluate the decision only on future costs and benefits, ignoring what's already spent.</p>
+              <p class="bias-question">If I were starting fresh today, would I still choose this?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-purple)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">04 / DECISION &amp; BELIEF</span>
+              <h3 class="bias-name">Decoy Effect</h3>
+              <p class="bias-key">A third, inferior option nudges us toward the "reasonable" one.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Decoy Effect</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Our preference between two choices shifts when a clearly inferior third option is introduced. Heavily exploited in pricing and bundling — but can backfire if used too transparently with sophisticated B2B buyers.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A pricing page adds a deliberately weak "Standard" tier so the "Pro" tier looks like the obvious smart choice.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I reacting to a real value comparison, or to an added option that's just there to shift my choice?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Remove the decoy mentally and re-evaluate the remaining options on their own.</p>
+              <p class="bias-question">Would I still choose this if the third option didn't exist?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-purple)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">05 / DECISION &amp; BELIEF</span>
+              <h3 class="bias-name">Anchoring Bias</h3>
+              <p class="bias-key">The first number we see becomes the reference point for everything after.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Anchoring Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Strongly shapes how prospects judge pricing, ROI claims, and proposals — whoever sets the first number controls the frame.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A sales deck leads with "$2M in losses from manual underwriting" before presenting the solution price, making the fee feel small by comparison.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Is my judgment of "expensive" or "cheap" based on a number I saw earlier, even if it's irrelevant?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Evaluate the offer on its own merits, independent of the first number mentioned.</p>
+              <p class="bias-question">What number did I see first, and is it actually relevant to this decision?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-purple)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">06 / DECISION &amp; BELIEF</span>
+              <h3 class="bias-name">Framing Effect</h3>
+              <p class="bias-key">The same fact, worded differently, changes how we judge it.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Framing Effect</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">"95% success rate" vs "5% failure rate" shapes buyer reaction even though the information is identical. Affects pricing pages, case study headlines, and proposal language.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">"Cut underwriting time by 80%" lands very differently than "Underwriting still takes 20% of the original time," even though they say the same thing.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I reacting to the substance of this claim, or to how it's been worded?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Restate the same fact in the opposite frame and see if your reaction changes.</p>
+              <p class="bias-question">Would I feel the same way if this were phrased the other way around?</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="emotional">
+    <div class="category-block reveal">
+      <div class="category-header">
+        <span class="category-swatch" style="background:var(--cat-teal)"></span>
+        <h2 class="category-name">Emotional &amp; Motivational Biases</h2>
+        <span class="category-count">04</span>
+      </div>
+      <p class="category-tagline">Where gut feeling, ownership, and urgency override the spreadsheet.</p>
+
+      <div class="card-grid" style="--accent: var(--cat-teal)">
+
+        <div class="bias-card" style="--accent: var(--cat-teal)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">07 / EMOTIONAL &amp; MOTIVATIONAL</span>
+              <h3 class="bias-name">Affect Heuristic</h3>
+              <p class="bias-key">When feelings steer the facts.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Affect Heuristic</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Quick emotional reactions — "this feels risky," "this feels exciting" — substitute for actual risk/benefit analysis. Shows up in pricing decisions, vendor selection, and campaign approval.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A newsletter subject line that "feels exciting" gets greenlit over one that tested better, because gut reaction overrode the data.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I reacting to how this makes me feel, or to what it actually does?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Separate the emotional reaction from the data; review the numbers without the framing.</p>
+              <p class="bias-question">If I removed the emotional packaging, what would the facts alone say?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-teal)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">08 / EMOTIONAL &amp; MOTIVATIONAL</span>
+              <h3 class="bias-name">Endowment Effect</h3>
+              <p class="bias-key">Once it's mine, it's worth more.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Endowment Effect</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">We place higher value on things we own simply because we own them. Leads to overvaluing internal work — a logo, a deck template, a pitch — and resisting outside feedback.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A founder won't update an old pitch deck structure because "we built this," even though prospects find it confusing.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I valuing this because it's good, or because it's mine/ours?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Get a neutral outsider's evaluation, blind to who made it.</p>
+              <p class="bias-question">What do I overvalue just because I created or own it?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-teal)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">09 / EMOTIONAL &amp; MOTIVATIONAL</span>
+              <h3 class="bias-name">Scarcity Bias</h3>
+              <p class="bias-key">We value things more when they seem limited or about to disappear.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Scarcity Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Used in event marketing ("limited seats for the mixer") and offer deadlines — effective in moderation, but erodes trust if the scarcity is fake.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">"Only 10 spots left" on an event signup page drives faster RSVPs — but repeating it for every event teaches prospects to ignore it.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Is this scarcity real, or a manufactured sense of urgency?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Ask whether the deadline or limit would actually be enforced if you waited.</p>
+              <p class="bias-question">What happens if I don't act before the deadline — is the scarcity actually real?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card bias-card--span3" style="--accent: var(--cat-teal)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">10 / EMOTIONAL &amp; MOTIVATIONAL</span>
+              <h3 class="bias-name">Loss Aversion</h3>
+              <p class="bias-key">Losing something looms larger than gaining the equivalent.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Loss Aversion</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">People act faster to avoid a loss than to capture an equal gain — shapes how offers, renewal reminders, and risk-focused pitches are framed.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">"Don't let manual processes keep costing you $50K/month" converts better than "Save $50K/month with automation," even though the math is identical.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I reacting more strongly because this is framed as a loss rather than a gain?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Reframe the message as a gain and see if the underlying case still holds up.</p>
+              <p class="bias-question">Would this still feel urgent if it were framed as an opportunity instead of a loss?</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="memory">
+    <div class="category-block reveal">
+      <div class="category-header">
+        <span class="category-swatch" style="background:var(--cat-pink)"></span>
+        <h2 class="category-name">Memory &amp; Recall Biases</h2>
+        <span class="category-count">02</span>
+      </div>
+      <p class="category-tagline">How postmortems quietly rewrite themselves once the outcome is known.</p>
+
+      <div class="card-grid card-grid--2col" style="--accent: var(--cat-pink)">
+
+        <div class="bias-card" style="--accent: var(--cat-pink)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">11 / MEMORY &amp; RECALL</span>
+              <h3 class="bias-name">Hindsight Bias</h3>
+              <p class="bias-key">"I knew it all along."</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Hindsight Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">After a campaign succeeds or fails, we retroactively feel it was predictable, which erodes honest postmortems and inflates confidence in future forecasts.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">After a webinar underperforms, the team insists "we knew that headline wouldn't land," even though no one flagged it beforehand.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Did I actually predict this, or am I rewriting my memory now that I know the outcome?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Check what was written down beforehand — briefs, predictions — before declaring it was "obvious."</p>
+              <p class="bias-question">What did I write down before I knew the result?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-pink)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">12 / MEMORY &amp; RECALL</span>
+              <h3 class="bias-name">Illusory Truth Effect</h3>
+              <p class="bias-key">Repetition makes a claim feel true, regardless of accuracy.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Illusory Truth Effect</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Repeating a tagline, stat, or positioning claim enough times — internally or externally — can make a team believe it's well-established fact, even if it was never actually verified.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">"AI will replace 40% of underwriting tasks" gets repeated across decks so often that no one remembers — or checks — where the number originally came from.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Do I believe this because it's true, or because I've heard it repeated so often?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Trace the claim back to its original source before repeating it again.</p>
+              <p class="bias-question">Where did this claim originally come from, and have I verified it myself?</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="attention">
+    <div class="category-block reveal">
+      <div class="category-header">
+        <span class="category-swatch" style="background:var(--cat-green)"></span>
+        <h2 class="category-name">Attention &amp; Perception Biases</h2>
+        <span class="category-count">07</span>
+      </div>
+      <p class="category-tagline">What the brain chooses to notice, and how it quietly rewrites what's actually there.</p>
+
+      <div class="card-grid" style="--accent: var(--cat-green)">
+
+        <div class="bias-card" style="--accent: var(--cat-green)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">13 / ATTENTION &amp; PERCEPTION</span>
+              <h3 class="bias-name">Clustering Illusion</h3>
+              <p class="bias-key">We see patterns in noise.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Clustering Illusion</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Small samples — a few good leads from one channel, a couple of viral posts — get read as meaningful trends, leading to over-investment in what's actually randomness.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">Two LinkedIn posts go viral in a week, so the team concludes "LinkedIn is our channel now" and shifts budget before enough data exists.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Is this a real trend, or a small cluster I'm over-reading?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Check the sample size and look at a longer time window before acting.</p>
+              <p class="bias-question">Would this pattern hold over 10x more data?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-green)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">14 / ATTENTION &amp; PERCEPTION</span>
+              <h3 class="bias-name">Threat / Affective Bias</h3>
+              <p class="bias-key">Attention locks onto danger and mood-matching signals first.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Threat / Affective Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">The brain automatically prioritizes anything that reads as risky or emotionally charged over neutral information. In a pipeline review, one alarming churn data point can dominate the room even when the rest of the dashboard is healthy.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A single angry comment on a sponsored post pulls the team's full attention away from a campaign that's otherwise converting well above target.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I fixated on this because it's the biggest risk, or because it's the loudest one?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Deliberately scan the full picture before reacting to the one alarming signal.</p>
+              <p class="bias-question">If this hadn't felt threatening, would I still think it's the most important thing here?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-green)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">15 / ATTENTION &amp; PERCEPTION</span>
+              <h3 class="bias-name">Inattentional Blindness</h3>
+              <p class="bias-key">We miss what's fully visible when our focus is elsewhere.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Inattentional Blindness</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Total focus on one task — like proofreading copy for tone — means an obvious error sitting in plain sight, like a broken link or wrong CTA, goes completely unnoticed.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A team spends an hour perfecting a landing page's headline and never notices the signup form button is pointing to the wrong URL.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Have I been so focused on one element that I haven't actually looked at the whole thing?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Hand the final review to someone who hasn't been staring at the same task.</p>
+              <p class="bias-question">Who's looking at this with fresh eyes before it ships?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-green)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">16 / ATTENTION &amp; PERCEPTION</span>
+              <h3 class="bias-name">Change Blindness</h3>
+              <p class="bias-key">We fail to notice gradual changes happening right in front of us.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Change Blindness</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Slow, incremental drift — in brand voice, lead quality, or a metric's baseline — passes unnoticed because no single moment looks different from the one before it.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A newsletter's tone slowly drifts away from brand guidelines over six months of small edits, and no one flags it because each issue looked fine next to the last one.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I only comparing this to last time, instead of to where we started?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Periodically compare current output directly against the original baseline, not just the most recent version.</p>
+              <p class="bias-question">If I placed this next to what we made a year ago, would I still call it the same thing?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-green)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">17 / ATTENTION &amp; PERCEPTION</span>
+              <h3 class="bias-name">Perceptual Set</h3>
+              <p class="bias-key">We see what our experience primes us to expect.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Perceptual Set</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Past experience, culture, and current mood shape what we expect to see — so two people can read the same client email and walk away with completely different impressions of its tone.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A marketer who's been burned by a slow-paying client reads neutral phrasing in a new prospect's email as a stalling tactic, while a colleague reads it as simply busy.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I reading this based on what's actually written, or based on what past experience primed me to expect?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Ask a colleague with no prior history on the account to read the same message and compare notes.</p>
+              <p class="bias-question">Would I interpret this the same way if I had no history with this person or topic?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-green)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">18 / ATTENTION &amp; PERCEPTION</span>
+              <h3 class="bias-name">Negativity Bias</h3>
+              <p class="bias-key">Bad feedback weighs more heavily than good feedback of equal size.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Negativity Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">One critical comment can outweigh ten pieces of positive feedback in how a campaign, deck, or piece of content gets remembered and judged internally.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A newsletter gets 40 positive replies and one unsubscribe with a complaint — and the team meeting ends up entirely about the complaint.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Is this one piece of negative feedback getting more airtime than its actual share of the response?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Weigh feedback by volume and pattern, not by how loudly or recently it was said.</p>
+              <p class="bias-question">Out of all the feedback received, how representative is the negative piece I'm focused on?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card bias-card--span3" style="--accent: var(--cat-green)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">19 / ATTENTION &amp; PERCEPTION</span>
+              <h3 class="bias-name">Naïve Realism</h3>
+              <p class="bias-key">The belief that we see the world exactly as it objectively is.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Naïve Realism</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Assuming your read on a campaign, a client relationship, or a market is simply "the facts" makes disagreement look like the other person being unreasonable, rather than just having a different — equally partial — view.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">Two team members disagree on why a campaign underperformed, each fully convinced their explanation is just "what happened," rather than one interpretation among several.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I treating my read of this situation as the objective truth, rather than as one perspective?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Actively ask what a reasonable person with different information might conclude instead.</p>
+              <p class="bias-question">What would someone who disagrees with me say they're seeing that I'm not?</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="social">
+    <div class="category-block reveal">
+      <div class="category-header">
+        <span class="category-swatch" style="background:var(--cat-blue)"></span>
+        <h2 class="category-name">Social &amp; Attribution Biases</h2>
+        <span class="category-count">05</span>
+      </div>
+      <p class="category-tagline">How rooms agree too quickly, and how confidence gets mistaken for competence.</p>
+
+      <div class="card-grid" style="--accent: var(--cat-blue)">
+
+        <div class="bias-card" style="--accent: var(--cat-blue)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">20 / SOCIAL &amp; ATTRIBUTION</span>
+              <h3 class="bias-name">Groupthink</h3>
+              <p class="bias-key">Agreement feels good. Until it doesn't.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Groupthink</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Teams converge on a decision to preserve harmony, suppressing dissent — risky in campaign approvals, pricing calls, or event planning where one dissenting voice could've caught a flaw.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">Everyone nods along to a tagline for a launch event because no one wants to be the one who derails a meeting that's running long.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Is everyone agreeing because it's right, or because no one wants to be the dissenter?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Explicitly assign someone to play devil's advocate before finalizing.</p>
+              <p class="bias-question">If I disagreed right now, would I feel safe saying so?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-blue)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">21 / SOCIAL &amp; ATTRIBUTION</span>
+              <h3 class="bias-name">Dunning–Kruger Effect</h3>
+              <p class="bias-key">The less we know, the more certain we sound.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Dunning–Kruger Effect</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">People with shallow knowledge of a topic often pitch with more confidence than experts, which can mislead stakeholders or clients into trusting the wrong voice.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A junior team member confidently proposes an AI underwriting workflow in a client deck, missing nuances a domain expert would flag immediately.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I, or is the person I'm listening to, confident because of expertise — or because of inexperience?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Bring in a subject-matter expert to pressure-test confident claims before they go external.</p>
+              <p class="bias-question">Does this confidence come from depth, or from not seeing the complexity yet?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-blue)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">22 / SOCIAL &amp; ATTRIBUTION</span>
+              <h3 class="bias-name">Social Proof Bias</h3>
+              <p class="bias-key">We assume something is good because others are doing it.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Social Proof Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Heavily used — and overused — in B2B marketing via logos, testimonials, "X companies trust us." Effective until it feels generic or unverifiable.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A landing page lists 20 client logos but a savvy buyer wonders how many are minor or inactive accounts.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I trusting this because of real evidence, or just because "everyone else is"?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Ask for specifics — which client, what result, verifiable how?</p>
+              <p class="bias-question">If the social proof were removed, would the claim still hold up on its own?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-blue)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">23 / SOCIAL &amp; ATTRIBUTION</span>
+              <h3 class="bias-name">Halo Effect</h3>
+              <p class="bias-key">One good trait makes us assume everything else is good too.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Halo Effect</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">A slick rebrand or one marquee client name can make buyers assume technical quality without it being demonstrated.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A prospect assumes a vendor's AI capability is strong because their website design is excellent — two unrelated qualities.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I generalizing from one impressive trait to the whole offering?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Evaluate the specific claim in question on its own evidence.</p>
+              <p class="bias-question">Is this one good impression bleeding into my judgment of something unrelated?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card bias-card--span2" style="--accent: var(--cat-blue)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">24 / SOCIAL &amp; ATTRIBUTION</span>
+              <h3 class="bias-name">Authority Bias</h3>
+              <p class="bias-key">A claim carries more weight simply because of who said it.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Authority Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">A quote from a "Chief AI Officer" carries more persuasive weight than the same insight from an unnamed analyst. Useful for content credibility, but can mean weak ideas get rubber-stamped because a senior person said them.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A vague AI roadmap gets approved largely because it was presented by a VP, while a more rigorous junior analyst's version was challenged line by line.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I trusting this because of the evidence, or because of who said it?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Evaluate the claim as if it came from an anonymous source.</p>
+              <p class="bias-question">Would I find this equally convincing if I didn't know who said it?</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="statistical">
+    <div class="category-block reveal">
+      <div class="category-header">
+        <span class="category-swatch" style="background:var(--cat-yellow)"></span>
+        <h2 class="category-name">Probability &amp; Statistical Biases</h2>
+        <span class="category-count">02</span>
+      </div>
+      <p class="category-tagline">Where success stories and recent data quietly stand in for the whole picture.</p>
+
+      <div class="card-grid card-grid--2col" style="--accent: var(--cat-yellow)">
+
+        <div class="bias-card" style="--accent: var(--cat-yellow)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">25 / PROBABILITY &amp; STATISTICAL</span>
+              <h3 class="bias-name">Survivorship Bias</h3>
+              <p class="bias-key">We learn from winners — and forget the rest.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Survivorship Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Case studies and "what worked" retrospectives only feature the campaigns or clients that succeeded, hiding the much larger set that failed using the same approach.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A case study touts an AI pilot's success without mentioning the other clients where the same pilot stalled.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I only seeing the success stories, and not the failures that used the same method?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Actively ask "what's the failure rate of this approach?" before generalizing.</p>
+              <p class="bias-question">What does the full sample look like, not just the winners I'm hearing about?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bias-card" style="--accent: var(--cat-yellow)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">26 / PROBABILITY &amp; STATISTICAL</span>
+              <h3 class="bias-name">Recency Bias</h3>
+              <p class="bias-key">We overweight the most recent information.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Recency Bias</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">A single good or bad client call, the last campaign's results, or this week's lead numbers can dominate strategic decisions more than they should — especially in fast-moving pipeline reviews.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">One bad month of lead quality triggers a full strategy pivot, even though the prior six months showed a stable, healthy trend.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I weighting this because it's most important, or just because it happened most recently?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Look at the full trend line, not just the latest data point.</p>
+              <p class="bias-question">Would I draw the same conclusion if I only had last quarter's data and not this week's?</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="bonus">
+    <div class="category-block reveal" style="margin-bottom: 0;">
+      <div class="category-header">
+        <span class="category-swatch" style="background:var(--gold)"></span>
+        <h2 class="category-name">Bandwagon Effect</h2>
+        <span class="category-count">BONUS</span>
+      </div>
+      <p class="category-tagline">Adopting a belief mainly because it's gaining popularity — not because you evaluated it yourself.</p>
+
+      <div class="card-grid" style="--accent: var(--gold); grid-template-columns: 1fr;">
+        <div class="bias-card" style="--accent: var(--gold)" tabindex="0" role="button" aria-expanded="false">
+          <div class="bias-card-inner">
+            <div class="bias-face bias-front">
+              <span class="bias-index">27 / STANDALONE</span>
+              <h3 class="bias-name">Bandwagon Effect</h3>
+              <p class="bias-key">We adopt a belief or behavior mainly because it's gaining popularity, not because we evaluated it ourselves.</p>
+              <span class="bias-flip-hint">Flip for the breakdown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></span>
+            </div>
+            <div class="bias-face bias-back">
+              <div class="bias-back-name">Bandwagon Effect</div>
+              <div class="bias-back-label">Why it matters</div>
+              <p class="bias-back-text">Drives FOMO-based adoption of trends ("everyone's doing AI agents now") — useful for urgency in marketing, risky for your own strategic decisions if you're following the herd instead of your data.</p>
+              <div class="bias-back-label">Real-world example</div>
+              <p class="bias-back-text">A company rushes to add "AI-powered" to every product description because competitors are doing it, without a clear case for what it adds.</p>
+              <div class="bias-back-label">Notice the trap</div>
+              <p class="bias-back-text">Am I doing this because it's right for us, or because everyone else seems to be doing it?</p>
+              <div class="bias-back-label">Break the pattern</div>
+              <p class="bias-back-text">Ask what specific evidence — not popularity — supports this choice for our situation.</p>
+              <p class="bias-question">If no one else were doing this, would I still think it's a good idea?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Mental Traps — A Bias Field Guide · Compiled by Sebastian Synowiec</span>
+  <span>Click any card to flip · Built for marketing &amp; sales teams</span>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://sebsyno.github.io/mental-traps.html#website",
+      "url": "https://sebsyno.github.io/mental-traps.html",
+      "name": "Mental Traps | Sebastian Synowiec",
+      "description": "A field guide to cognitive biases relevant to B2B marketing, sales, and content work.",
+      "publisher": {
+        "@id": "https://sebsyno.github.io/#person"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://sebsyno.github.io/mental-traps.html#article",
+      "headline": "Mental Traps — A Bias Field Guide for Marketing & Sales",
+      "url": "https://sebsyno.github.io/mental-traps.html",
+      "description": "27 cognitive biases that shape how campaigns get approved, deals get won, and decks get believed — with real-world marketing and sales examples and critical-thinking countermeasures.",
+      "isPartOf": {
+        "@id": "https://sebsyno.github.io/mental-traps.html#website"
+      },
+      "author": {
+        "@id": "https://sebsyno.github.io/#person"
+      },
+      "about": [
+        { "@type": "Thing", "name": "Cognitive bias" },
+        { "@type": "Thing", "name": "Decision-making" },
+        { "@type": "Thing", "name": "B2B marketing" },
+        { "@type": "Thing", "name": "Sales psychology" }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://sebsyno.github.io/mental-traps.html#biaslist",
+      "name": "Cognitive Biases for Marketing & Sales",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Belief Bias", "description": "When logic loses to likability." },
+        { "@type": "ListItem", "position": 2, "name": "Confirmation Bias", "description": "We seek what supports us — and screen out what challenges us." },
+        { "@type": "ListItem", "position": 3, "name": "Sunk Cost Fallacy", "description": "You can't get it back — but it still controls you." },
+        { "@type": "ListItem", "position": 4, "name": "Decoy Effect", "description": "A third, inferior option nudges us toward the reasonable one." },
+        { "@type": "ListItem", "position": 5, "name": "Anchoring Bias", "description": "The first number we see becomes the reference point for everything after." },
+        { "@type": "ListItem", "position": 6, "name": "Framing Effect", "description": "The same fact, worded differently, changes how we judge it." },
+        { "@type": "ListItem", "position": 7, "name": "Affect Heuristic", "description": "When feelings steer the facts." },
+        { "@type": "ListItem", "position": 8, "name": "Endowment Effect", "description": "Once it's mine, it's worth more." },
+        { "@type": "ListItem", "position": 9, "name": "Scarcity Bias", "description": "We value things more when they seem limited or about to disappear." },
+        { "@type": "ListItem", "position": 10, "name": "Loss Aversion", "description": "Losing something looms larger than gaining the equivalent." },
+        { "@type": "ListItem", "position": 11, "name": "Hindsight Bias", "description": "I knew it all along." },
+        { "@type": "ListItem", "position": 12, "name": "Illusory Truth Effect", "description": "Repetition makes a claim feel true, regardless of accuracy." },
+        { "@type": "ListItem", "position": 13, "name": "Clustering Illusion", "description": "We see patterns in noise." },
+        { "@type": "ListItem", "position": 14, "name": "Threat / Affective Bias", "description": "Attention locks onto danger and mood-matching signals first." },
+        { "@type": "ListItem", "position": 15, "name": "Inattentional Blindness", "description": "We miss what's fully visible when our focus is elsewhere." },
+        { "@type": "ListItem", "position": 16, "name": "Change Blindness", "description": "We fail to notice gradual changes happening right in front of us." },
+        { "@type": "ListItem", "position": 17, "name": "Perceptual Set", "description": "We see what our experience primes us to expect." },
+        { "@type": "ListItem", "position": 18, "name": "Negativity Bias", "description": "Bad feedback weighs more heavily than good feedback of equal size." },
+        { "@type": "ListItem", "position": 19, "name": "Naïve Realism", "description": "The belief that we see the world exactly as it objectively is." },
+        { "@type": "ListItem", "position": 20, "name": "Groupthink", "description": "Agreement feels good. Until it doesn't." },
+        { "@type": "ListItem", "position": 21, "name": "Dunning–Kruger Effect", "description": "The less we know, the more certain we sound." },
+        { "@type": "ListItem", "position": 22, "name": "Social Proof Bias", "description": "We assume something is good because others are doing it." },
+        { "@type": "ListItem", "position": 23, "name": "Halo Effect", "description": "One good trait makes us assume everything else is good too." },
+        { "@type": "ListItem", "position": 24, "name": "Authority Bias", "description": "A claim carries more weight simply because of who said it." },
+        { "@type": "ListItem", "position": 25, "name": "Survivorship Bias", "description": "We learn from winners — and forget the rest." },
+        { "@type": "ListItem", "position": 26, "name": "Recency Bias", "description": "We overweight the most recent information." },
+        { "@type": "ListItem", "position": 27, "name": "Bandwagon Effect", "description": "We adopt a belief mainly because it's gaining popularity." }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://sebsyno.github.io/#person",
+      "name": "Sebastian Synowiec",
+      "jobTitle": "Marketing Manager",
+      "url": "https://sebsyno.github.io/",
+      "worksFor": { "@type": "Organization", "name": "VirtusLab" }
+    }
+  ]
+}
+</script>
+
+<script>
+  // Card flip
+  document.querySelectorAll('.bias-card').forEach(function(card) {
+    function toggle() {
+      var isFlipped = card.classList.toggle('flipped');
+      card.setAttribute('aria-expanded', isFlipped ? 'true' : 'false');
+    }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+
+  // Scroll reveal
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(function(el) { observer.observe(el); });
+  } else {
+    revealEls.forEach(function(el) { el.classList.add('visible'); });
+  }
+</script>
+
+</body>
+</html>
